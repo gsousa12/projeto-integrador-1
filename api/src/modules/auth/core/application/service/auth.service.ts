@@ -36,7 +36,7 @@ export class AuthService implements IAuthService {
     }
     const isValidPassword = await this.authHelper.comparePassword(password, user.password);
     if (!isValidPassword) {
-      throw new BadRequestException('Senha inválida');
+      throw new BadRequestException('Senha incorreta.');
     }
     return user;
   }

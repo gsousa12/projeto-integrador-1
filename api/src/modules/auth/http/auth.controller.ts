@@ -14,6 +14,7 @@ export class AuthController {
   async login(@Body() request: LoginRequestDto, @Res({ passthrough: true }) response: Response) {
     await this.authService.login(request, response);
     // return createApiResponse(null);
+
     return null;
   }
 }
