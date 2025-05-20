@@ -1,3 +1,4 @@
+import { getAxiosErrorMessage } from "@/common/api/utils/functions";
 import { loginMutation } from "@api/mutations/auth/loginMutation";
 import { useState } from "react";
 
@@ -11,10 +12,12 @@ export const useloginPageController = () => {
     loginMutate({ email, password });
   };
 
+  console.log(error);
+
   return {
     loginDispatch,
     isPending,
     isError,
-    errorMessage: (error as any)?.message,
+    errorMessage: getAxiosErrorMessage(error),
   };
 };

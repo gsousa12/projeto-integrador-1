@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { LoginPage } from "../../../modules/auth/pages/login-page/LoginPage";
 
 interface LoginRouteProps {
@@ -6,11 +6,8 @@ interface LoginRouteProps {
 }
 
 export const LoginRoute = ({ isAuthenticated }: LoginRouteProps) => {
-  if (!isAuthenticated) {
-    return (
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-      </Routes>
-    );
+  if (isAuthenticated) {
+    return <Navigate to="/home" replace />;
   }
+  return <LoginPage />;
 };
