@@ -10,6 +10,7 @@ export const AppRoutes = () => {
         <Route path="*" element={<NotFoundPage />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<HomePage />} />
           <Route path="/home" element={<HomePage />} />
         </Route>
       </Routes>

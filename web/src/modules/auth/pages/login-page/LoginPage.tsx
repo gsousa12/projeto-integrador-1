@@ -12,16 +12,13 @@ export const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const disableLoginButton = isPending || email === "" || password === "";
-  const [alertOpen, setAlertOpen] = useState(true);
+  const [alertPopupOpen, setAlertPopupOpen] = useState(true);
 
   useEffect(() => {
     if (isError) {
-      setAlertOpen(true);
+      setAlertPopupOpen(true);
     }
-  }, [isError, setAlertOpen]);
-
-  console.log(isError);
-  console.log(alertOpen);
+  }, [isError, setAlertPopupOpen]);
 
   return (
     <div className="min-h-screen flex bg-white">
@@ -104,10 +101,10 @@ export const LoginPage = () => {
       </div>
       {isError && (
         <AlertPopUp
-          open={alertOpen}
+          open={alertPopupOpen}
           title="Oops!"
           description={errorMessage}
-          onClose={() => setAlertOpen(!alertOpen)}
+          onClose={() => setAlertPopupOpen(!alertPopupOpen)}
         />
       )}
       <div className="hidden md:flex w-1/2 items-center justify-center relative">
