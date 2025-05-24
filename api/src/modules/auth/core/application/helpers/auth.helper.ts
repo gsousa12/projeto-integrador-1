@@ -6,11 +6,11 @@ import { BcryptAdapter } from 'src/common/adapters/bcrypt.adapter';
 export class AuthHelper {
   constructor(private readonly bcryptAdapter: BcryptAdapter) {}
 
-  async comparePassword(password: string, userPassword: string): Promise<boolean> {
-    return await this.bcryptAdapter.compare(password, userPassword);
+  comparePassword(password: string, userPassword: string): Promise<boolean> {
+    return this.bcryptAdapter.compare(password, userPassword);
   }
 
-  async implementsCookies(access_token: string, res: Response) {
+  implementsCookies(access_token: string, res: Response) {
     res.cookie('access_token', access_token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'development' ? false : true,
@@ -19,11 +19,15 @@ export class AuthHelper {
     });
   }
 
-  async clearCookies(res: Response) {
+  clearCookies(res: Response) {
     res.clearCookie('access_token', {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'development' ? false : true,
       sameSite: 'strict',
     });
+  }
+
+  encryptPassword(password: string): Promise<string> {
+    return this.bcryptAdapter.hash(password);
   }
 }

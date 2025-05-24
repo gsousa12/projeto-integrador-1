@@ -1,4 +1,4 @@
-import { IsEmail, IsString, Length, Min, MinLength } from 'class-validator';
+import { IsEmail, IsString, Length } from 'class-validator';
 import { validationMessages } from 'src/common/utils/validation-message';
 
 export class LoginRequestDto {

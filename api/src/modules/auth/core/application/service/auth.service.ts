@@ -2,6 +2,7 @@ import { BadRequestException, Inject, Injectable, NotFoundException } from '@nes
 import { AUTH_REPOSITORY } from 'src/common/tokens/repositories.tokens';
 import { IAuthService } from './interfaces/auth-service.interface';
 import { LoginRequestDto } from '../dtos/request/login.request.dto';
+import { RegisterRequestDto } from '../dtos/request/register.request.dto';
 import { Response } from 'express';
 import { User } from '@prisma/client';
 import { AuthRepository } from 'src/modules/auth/infrastructure/repositories/auth.repository';
@@ -25,7 +26,32 @@ export class AuthService implements IAuthService {
       email: user.email,
     };
     const access_token = this.jwtService.sign(payload);
-    await this.authHelper.implementsCookies(access_token, response);
+    this.authHelper.implementsCookies(access_token, response);
+  }
+
+  async register(request: RegisterRequestDto, response: Response): Promise<void> {
+    const existingUser = await this.authRepository.findUserByEmail(request.email);
+    if (existingUser) {
+      throw new BadRequestException('Este e-mail já está em uso.');
+    }
+
+    const hashedPassword = await this.authHelper.encryptPassword(request.password);
+
+    const newUser = await this.authRepository.createUser({
+      name: request.name,
+      email: request.email,
+      password: hashedPassword,
+    });
+
+    const payload = {
+      userId: newUser.id,
+      name: newUser.name,
+      email: newUser.email,
+      isActive: newUser.isActive,
+    };
+
+    const access_token = this.jwtService.sign(payload);
+    this.authHelper.implementsCookies(access_token, response);
   }
 
   async validateUser(email: string, password: string): Promise<User> {
