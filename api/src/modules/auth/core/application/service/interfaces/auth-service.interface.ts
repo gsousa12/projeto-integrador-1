@@ -1,5 +1,5 @@
 import { User } from '@prisma/client';
-import { LoginRequestDto } from '../../application/dtos/request/login.request.dto';
+import { LoginRequestDto } from '../../dtos/request/login.request.dto';
 import { Response } from 'express';
 
 export interface IAuthService {

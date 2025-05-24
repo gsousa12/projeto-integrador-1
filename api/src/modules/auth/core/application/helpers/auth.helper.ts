@@ -15,7 +15,7 @@ export class AuthHelper {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'development' ? false : true,
       sameSite: 'strict',
-      maxAge: Number(process.env.JWT_MAX_AGE),
+      maxAge: 3600000,
     });
   }
 

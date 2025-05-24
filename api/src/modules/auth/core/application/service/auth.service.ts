@@ -1,6 +1,6 @@
 import { BadRequestException, Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { AUTH_REPOSITORY } from 'src/common/tokens/repositories.tokens';
-import { IAuthService } from '../interfaces/auth-service.interface';
+import { IAuthService } from './interfaces/auth-service.interface';
 import { LoginRequestDto } from '../dtos/request/login.request.dto';
 import { Response } from 'express';
 import { User } from '@prisma/client';
@@ -23,7 +23,6 @@ export class AuthService implements IAuthService {
       userId: user.id,
       name: user.name,
       email: user.email,
-      isActive: user.isActive,
     };
     const access_token = this.jwtService.sign(payload);
     await this.authHelper.implementsCookies(access_token, response);
@@ -34,7 +33,7 @@ export class AuthService implements IAuthService {
     if (!user) {
       throw new NotFoundException('Não existe nenhum usuário registrado com esse email.');
     }
-    const isValidPassword = await this.authHelper.comparePassword(password, user.password);
+    const isValidPassword = await this.authHelper.comparePassword(password, user.passwordHash);
     if (!isValidPassword) {
       throw new BadRequestException('Senha incorreta.');
     }
