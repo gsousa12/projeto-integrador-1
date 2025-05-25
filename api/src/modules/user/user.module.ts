@@ -3,9 +3,9 @@ import { UserController } from './http/controller/user.controller';
 import { UserRepository } from './infrastructure/repository/user.repository';
 import { UserService } from './core/application/services/user.service';
 import { UserHelper } from './core/application/helpers/user.helper';
-import { UserMapper } from './core/application/mappers/user.mapper';
 import { USER_REPOSITORY } from 'src/common/tokens/repositories.tokens';
 import { PrismaService } from 'src/common/modules/prisma/service/prisma.service';
+import { BcryptAdapter } from 'src/common/adapters/bcrypt.adapter';
 
 @Module({
   imports: [],
@@ -18,7 +18,7 @@ import { PrismaService } from 'src/common/modules/prisma/service/prisma.service'
     UserService,
     UserHelper,
     PrismaService,
-    UserMapper,
+    BcryptAdapter,
   ],
   exports: [],
 })

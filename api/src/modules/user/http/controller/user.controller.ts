@@ -10,35 +10,29 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { UserService } from '../../core/application/services/user.service';
-import { UserMapper } from '../../core/application/mappers/user.mapper';
 import { AuthGuard } from '@nestjs/passport';
 import { Request } from 'express';
 import { createApiResponse } from 'src/common/utils/api-response';
+import { SignupRequestDto } from '../../core/application/dtos/request/signup.request.dto';
 
 @Controller('user')
 export class UserController {
-  constructor(
-    private readonly userService: UserService,
-    private readonly userMapper: UserMapper,
-  ) {}
+  constructor(private readonly userService: UserService) {}
 
-  @Post('/')
+  @Post('/create')
   @HttpCode(HttpStatus.CREATED)
-  async createUser(@Body() request: CreateUserRequestDto) {
-    const user = await UserMapper.toMapperCreateUserRequest(request);
-    const createdUser = await this.userService.create(user, customerId);
-    const response = await UserMapper.toMapperCreateUserResponse(createdUser);
-
-    return createApiResponse('Usuário criado com sucesso', response);
+  async signup(@Body() request: SignupRequestDto) {
+    await this.userService.signup(request);
+    return null;
   }
 
   @UseGuards(AuthGuard('jwt'))
-  @Get('/get-user-info')
+  @Get('/information')
   @HttpCode(HttpStatus.OK)
   async getUserInfo(@Req() request: Request) {
     if (!request.user) {
       throw new BadRequestException('Usuário não encontrado.');
     }
-    return createApiResponse(request.user!);
+    return createApiResponse(request.user);
   }
 }

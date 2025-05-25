@@ -11,23 +11,23 @@ export class AuthHelper {
   }
 
   implementsCookies(access_token: string, res: Response) {
+    const isProductionEnvironment = process.env.NODE_ENV === 'production';
+
     res.cookie('access_token', access_token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'development' ? false : true,
-      sameSite: 'strict',
-      maxAge: 3600000,
+      secure: isProductionEnvironment,
+      sameSite: isProductionEnvironment ? 'none' : 'lax',
+      maxAge: Number(3600000),
     });
   }
 
   clearCookies(res: Response) {
+    const isProductionEnvironment = process.env.NODE_ENV === 'production';
+
     res.clearCookie('access_token', {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'development' ? false : true,
-      sameSite: 'strict',
+      sameSite: isProductionEnvironment ? 'none' : 'lax',
+      maxAge: Number(3600000),
     });
-  }
-
-  encryptPassword(password: string): Promise<string> {
-    return this.bcryptAdapter.hash(password);
   }
 }
