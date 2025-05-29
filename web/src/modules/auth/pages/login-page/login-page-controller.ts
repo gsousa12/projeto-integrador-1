@@ -45,6 +45,7 @@ export const useloginPageController = () => {
 
   return {
     loginDispatch,
+    loginMutate,
     isPending,
     isError,
     errorMessage: getAxiosErrorMessage(error),
