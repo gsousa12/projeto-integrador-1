@@ -1,16 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import { mockIsAuthenticated } from "../app-layout/AppLayout";
 
 export const NotFoundPage = () => {
-  const isAuthenticated = mockIsAuthenticated;
   const navigate = useNavigate();
 
   const handleBack = () => {
-    if (isAuthenticated) {
-      navigate("/home", { replace: true });
-    } else {
-      navigate("/login", { replace: true });
-    }
+    navigate("/home", { replace: true });
   };
 
   return (

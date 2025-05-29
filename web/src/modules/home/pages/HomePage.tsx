@@ -3,7 +3,7 @@ import { ContentWrapper } from "@/common/components/wrappers/content-wrapper/Con
 export const HomePage = () => {
   return (
     <ContentWrapper>
-      <></>
+      <>HOME</>
     </ContentWrapper>
   );
 };

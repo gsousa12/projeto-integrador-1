@@ -1,7 +1,5 @@
-import { Navigate, Outlet } from "react-router-dom";
-import { mockIsAuthenticated } from "../app-layout/AppLayout";
+import { Outlet } from "react-router-dom";
 
 export const ProtectedRoute = () => {
-  const isAuthenticated = mockIsAuthenticated;
-  return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
+  return <Outlet />;
 };
