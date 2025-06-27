@@ -3,6 +3,7 @@ import { NotFoundPage } from "../not-found-page/NotFoundPage";
 import { ProtectedRoute } from "../protected-route/ProtectedRoute";
 import { HomePage } from "../../../modules/home/pages/HomePage";
 import { LoginPage } from "@/modules/auth/pages/login-page/LoginPage";
+import { PetDetails } from "@/modules/pet/pet-details/PetDetails";
 
 export const AppRoutes = () => {
   return (
@@ -13,6 +14,7 @@ export const AppRoutes = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/home" element={<HomePage />} />
+          <Route path="/pet/:id" element={<PetDetails />} />
         </Route>
       </Routes>
     </main>
