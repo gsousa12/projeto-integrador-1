@@ -3,6 +3,7 @@ import { PetService } from '../../core/application/services/pet.service';
 import { AuthGuard } from '@nestjs/passport';
 import { CreatePetRequestDto } from '../../core/application/dtos/request/create-pet.request.dto';
 import { createApiResponse } from 'src/common/utils/api-response';
+import { FavoritePetRequestDto } from '../../core/application/dtos/request/favorite-pet.request.dto';
 
 @Controller('pet')
 export class PetController {
@@ -12,8 +13,8 @@ export class PetController {
   @Post('/')
   @HttpCode(HttpStatus.OK)
   async createPet(@Body() request: CreatePetRequestDto) {
-    const createdPet = await this.petService.createPet(request);
-    return createApiResponse(createdPet);
+    await this.petService.createPet(request);
+    return null;
   }
 
   @UseGuards(AuthGuard('jwt'))
@@ -53,5 +54,13 @@ export class PetController {
 
     const { petList, meta } = await this.petService.getPetList(parsedPage, limit, filters);
     return createApiResponse(petList, meta);
+  }
+
+  @UseGuards(AuthGuard('jwt'))
+  @Post('/favorite')
+  @HttpCode(HttpStatus.OK)
+  async favoritePet(@Body() request: FavoritePetRequestDto) {
+    await this.petService.favoritePet(request);
+    return null;
   }
 }

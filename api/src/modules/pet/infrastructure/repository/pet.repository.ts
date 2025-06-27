@@ -14,7 +14,7 @@ export class PetRepository implements IPetRepository {
     return await this.prisma.pet.create({
       data: {
         id: crypto.randomUUID(),
-        ownerId: request.ownerId,
+        ownerId: request.userId,
         name: request.name,
         species: request.species,
         breed: request.breed,
@@ -119,5 +119,31 @@ export class PetRepository implements IPetRepository {
         totalPages,
       },
     };
+  }
+
+  async findPetById(petId: string): Promise<Pet | null> {
+    return await this.prisma.pet.findUnique({
+      where: { id: petId },
+    });
+  }
+
+  async isPetFavoritedByUser(petId: string, userId: number): Promise<boolean> {
+    const favorite = await this.prisma.favoritedPet.findFirst({
+      where: {
+        petId,
+        userId,
+      },
+    });
+    return !!favorite;
+  }
+
+  async addPetToFavorites(petId: string, userId: number): Promise<void> {
+    await this.prisma.favoritedPet.create({
+      data: {
+        id: crypto.randomUUID(),
+        petId,
+        userId,
+      },
+    });
   }
 }

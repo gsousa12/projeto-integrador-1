@@ -1,0 +1,18 @@
+meta {
+  name: favoritePet
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:3000/api/pet/favorite
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "userId": 1 ,
+    "petId": "b1207ec5-5fce-4d0b-b984-00f5ced5b14f"
+  }
+}

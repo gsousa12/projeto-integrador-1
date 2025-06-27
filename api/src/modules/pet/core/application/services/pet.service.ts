@@ -6,6 +6,7 @@ import { PetRepository } from 'src/modules/pet/infrastructure/repository/pet.rep
 import { CreatePetRequestDto } from '../dtos/request/create-pet.request.dto';
 import { Pet } from '@prisma/client';
 import { PaginationMeta } from 'src/common/utils/api-response';
+import { FavoritePetRequestDto } from '../dtos/request/favorite-pet.request.dto';
 
 @Injectable()
 export class PetService implements IPetService {
@@ -14,9 +15,8 @@ export class PetService implements IPetService {
     private readonly petHelper: PetHelper,
   ) {}
 
-  async createPet(request: CreatePetRequestDto) {
-    const createdPet = await this.petRepository.create(request);
-    return createdPet;
+  async createPet(request: CreatePetRequestDto): Promise<void> {
+    await this.petRepository.create(request);
   }
 
   async getPetList(
@@ -36,5 +36,21 @@ export class PetService implements IPetService {
     },
   ): Promise<{ petList: Pet[]; meta: PaginationMeta }> {
     return this.petRepository.getPetList(page, limit, filters);
+  }
+
+  async favoritePet(request: FavoritePetRequestDto): Promise<void> {
+    const { petId, userId } = request;
+
+    const pet = await this.petRepository.findPetById(petId);
+    if (!pet) {
+      throw new Error('Pet not found');
+    }
+
+    const isFavorited = await this.petRepository.isPetFavoritedByUser(petId, userId);
+    if (isFavorited) {
+      throw new Error('Pet is already favorited by this user');
+    }
+
+    await this.petRepository.addPetToFavorites(petId, userId);
   }
 }
