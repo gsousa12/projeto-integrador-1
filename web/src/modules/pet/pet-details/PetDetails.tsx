@@ -23,7 +23,6 @@ export const PetDetails = () => {
     isFavorited,
     handleShare,
     handleContact,
-    toggleLogin,
     handleFavorite,
   } = usePetDetailsController();
 
@@ -50,16 +49,6 @@ export const PetDetails = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 pt-8">
-      <div className="fixed top-4 right-4 z-50">
-        <Button
-          onClick={toggleLogin}
-          variant={isLoggedIn ? "default" : "outline"}
-          size="sm"
-        >
-          {isLoggedIn ? "Logout" : "Login"}
-        </Button>
-      </div>
-
       <div className="max-w-6xl mx-auto p-4">
         <div className="grid lg:grid-cols-2 gap-6">
           <div className="lg:hidden order-1">

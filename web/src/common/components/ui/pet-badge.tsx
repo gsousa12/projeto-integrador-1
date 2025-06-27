@@ -1,16 +1,11 @@
 import { CustomBadge } from "./custom-badge";
 
 interface PetBadgesProps {
-  // Informações básicas
   animal?: "Gato" | "Cachorro" | string;
   gender?: "Macho" | "Fêmea" | string;
-
-  // Características (podem ser nulas)
   age?: string | null;
   size?: string | null;
   breed?: string | null;
-
-  // Status fixos
   vaccinated?: boolean;
   neutered?: boolean;
 
