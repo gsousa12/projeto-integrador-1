@@ -38,15 +38,15 @@ export const AnimalDropdownMenu = ({
     <div
       ref={menuRef}
       className={`
-          absolute left-0 right-0 z-50 flex justify-center
-          transition-all duration-300
-          ${
-            open
-              ? "opacity-100 translate-y-0 pointer-events-auto"
-              : "opacity-0 -translate-y-2 pointer-events-none"
-          }
-        `}
-      style={{ top: isMobile ? "60px" : "70px" }}
+        ${isMobile ? "fixed inset-x-0 top-[150px]" : "absolute left-0 mt-2"}
+        z-50 flex ${isMobile ? "justify-center" : ""}
+        transition-all duration-300
+        ${
+          open
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 -translate-y-2 pointer-events-none"
+        }
+      `}
       aria-modal="true"
       role="menu"
     >

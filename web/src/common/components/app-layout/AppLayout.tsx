@@ -1,15 +1,19 @@
-import { AppRoutes } from "../app-routes/AppRoutes";
+import { ReactNode } from "react";
 import { GlobalWrapper } from "../wrappers/global-wrapper/GlobalWrapper";
 import { GlobalLoader } from "../loader/GlobalLoader";
 import { Header } from "../header/Header";
 
-export const AppLayout = () => {
+type AppLayoutProps = {
+  children: ReactNode;
+};
+
+export const AppLayout = ({ children }: AppLayoutProps) => {
   return (
     <GlobalWrapper>
       <GlobalLoader />
       <>
         <Header />
-        <AppRoutes />
+        {children}
       </>
     </GlobalWrapper>
   );

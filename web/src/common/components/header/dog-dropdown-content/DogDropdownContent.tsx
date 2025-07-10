@@ -1,4 +1,4 @@
-import { Bone, Dog, Info, PawPrint } from "lucide-react";
+import { Dog, PawPrint } from "lucide-react";
 import { DropdownSectionTitle } from "../dopdown-section-title/DropdownSectionTitle";
 import { DropdownMenuItem } from "../dropdown-menu-item/DropdownMenuItem";
 
