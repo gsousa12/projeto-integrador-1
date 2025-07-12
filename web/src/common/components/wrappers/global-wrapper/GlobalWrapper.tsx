@@ -5,5 +5,9 @@ interface GlobalWrapperProps {
 }
 
 export const GlobalWrapper = ({ children }: GlobalWrapperProps) => {
-  return <div className="bg-white text-gray-900">{children}</div>;
+  return (
+    <div className="min-h-screen flex flex-col bg-white text-gray-900">
+      {children}
+    </div>
+  );
 };

@@ -4,7 +4,7 @@ import { loginMutation } from "@api/mutations/auth/loginMutation";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const useloginPageController = () => {
+export const useLoginPageController = () => {
   const {
     mutateAsync: loginMutate,
     isPending,
@@ -12,19 +12,23 @@ export const useloginPageController = () => {
     error,
     isSuccess,
   } = loginMutation();
-  const [email, _] = useState("teste@email.com");
-  const [password, __] = useState("123456");
+
+  const [email, setEmail] = useState("teste@email.com");
+  const [password, setPassword] = useState("123456");
+
   const setAuthenticated = useAuthStore((state) => state.setAuthenticated);
   const setUser = useAuthStore((state) => state.setUser);
   const navigate = useNavigate();
 
-  const loginDispatch = async (event: React.FormEvent) => {
+  const loginDispatch = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
       await loginMutate({ email, password });
+
       if (isSuccess) {
         setAuthenticated(true);
+
         const user = {
           userId: 1,
           name: "mockName",
@@ -33,6 +37,7 @@ export const useloginPageController = () => {
           iat: 1,
           exp: 1,
         };
+
         setUser(user);
         navigate("/dashboard", { replace: true });
       }
@@ -44,6 +49,10 @@ export const useloginPageController = () => {
   };
 
   return {
+    email,
+    setEmail,
+    password,
+    setPassword,
     loginDispatch,
     loginMutate,
     isPending,

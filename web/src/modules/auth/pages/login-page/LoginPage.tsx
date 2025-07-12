@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Mail, Lock } from "lucide-react";
-import { useloginPageController } from "./login-page-controller";
+import { useLoginPageController } from "./login-page-controller";
 import { LoginFormData, loginSchema } from "./login-page-schema";
 
 export const LoginPage = () => {
-  const { loginDispatch, loginMutate, isPending, isError, errorMessage } =
-    useloginPageController();
+  const { loginMutate, isPending } =
+    useLoginPageController();
   const {
     register,
     handleSubmit,

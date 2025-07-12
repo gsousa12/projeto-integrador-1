@@ -16,6 +16,7 @@
       "@lib/*": ["./src/common/lib/*"],
       "@api/*": ["./src/common/api/*"],
       "@assets/*": ["./src/common/assets/*"]
-    }
+    },
+    "jsx": "react-jsx"
   }
 }

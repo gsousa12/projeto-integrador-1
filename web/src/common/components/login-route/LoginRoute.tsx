@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { LoginPage } from "../../../modules/auth/pages/login-page/LoginPage";
 
 interface LoginRouteProps {
