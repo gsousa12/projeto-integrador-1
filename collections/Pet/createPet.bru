@@ -1,0 +1,31 @@
+meta {
+  name: createPet
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:3000/api/pet/
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "ownerId": 3,
+    "name": "Simba",
+    "species": "cat",
+    "breed": "Siamês",
+    "gender": "male",
+    "age": 2,
+    "size": "small",
+    "description": "Olhos azuis e muito carinhoso.",
+    "vaccinated": false,
+    "neutered": true,
+    "imagesUrls": [
+      "https://meusite.com/imagens/simba1.jpg"
+    ],
+    "city": "Quixadá",
+    "state": "CE"
+  }
+}

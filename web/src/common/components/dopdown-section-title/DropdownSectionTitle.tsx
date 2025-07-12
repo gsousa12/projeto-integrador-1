@@ -1,6 +1,6 @@
 interface DropdownSectionTitleProps {
   title: string;
-  icon?: any;
+  icon?: React.ReactNode;
 }
 export const DropdownSectionTitle = ({
   title,

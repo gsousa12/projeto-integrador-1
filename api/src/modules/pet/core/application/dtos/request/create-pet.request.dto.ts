@@ -1,7 +1,7 @@
 import { EPetGender, EPetSize, EPetSpecies } from '../../../domain/enums/pet.enums';
 
 export class CreatePetRequestDto {
-  ownerId: number;
+  userId: number;
   name: string;
   species: EPetSpecies;
   breed: string | null;

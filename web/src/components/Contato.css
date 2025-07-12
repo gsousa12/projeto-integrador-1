@@ -1,0 +1,57 @@
+.contato-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #eee;
+}
+.tab {
+  padding-bottom: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+}
+.tab.active {
+  color: #e63950;
+  border-bottom: 3px solid #e63950;
+}
+.contato-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.05);
+  padding: 30px 20px;
+  text-align: center;
+}
+.contato-card h2 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.whatsapp-btn {
+  display: block;
+  background: #28a745;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 6px;
+  margin: 20px 0;
+  text-decoration: none;
+}
+.contato-info .item {
+  background: #f8f8f8;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 12px;
+  text-align: left;
+}
+.info-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

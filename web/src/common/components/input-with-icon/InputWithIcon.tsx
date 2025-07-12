@@ -1,4 +1,20 @@
 import { Eye, EyeOff } from "lucide-react";
+import { ChangeEvent, ElementType } from "react";
+
+interface InputWithIconProps {
+  id: string;
+  type: string;
+  icon: ElementType;
+  placeholder?: string;
+  value: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  disabled?: boolean;
+  required?: boolean;
+  showPassword?: boolean;
+  setShowPassword?: (show: boolean) => void;
+  error?: string;
+  autoComplete?: string;
+}
 
 export const InputWithIcon = ({
   id,
@@ -13,7 +29,7 @@ export const InputWithIcon = ({
   setShowPassword,
   error,
   autoComplete,
-}: any) => {
+}: InputWithIconProps) => {
   const isPassword = type === "password";
 
   return (
@@ -49,7 +65,7 @@ export const InputWithIcon = ({
             tabIndex={-1}
             className="mr-3 focus:outline-none"
             aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
-            onClick={() => setShowPassword((v: any) => !v)}
+            onClick={() => setShowPassword(!showPassword)}
           >
             {showPassword ? (
               <EyeOff className="w-5 h-5 text-gray-400" />

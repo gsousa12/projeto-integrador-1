@@ -1,0 +1,111 @@
+.tela-inicial {
+  padding: 2rem;
+  font-family: "Inter", sans-serif;
+}
+
+.tela-inicial h2 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.grid-pets {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.card-pet {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.badge-destaque {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: #e0004d;
+  color: white;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.pet-img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  height: 180px;
+  margin-bottom: 0.75rem;
+}
+
+.card-pet h3 {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.badges {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.badge {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+.verde {
+  background: #d1f7e1;
+  color: #008f4f;
+}
+
+.azul {
+  background: #e2e8f0;
+  color: #3b82f6;
+}
+
+.descricao {
+  font-size: 0.875rem;
+  color: #444;
+  margin-bottom: 0.5rem;
+}
+
+.info,
+.local {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 0.25rem;
+}
+
+.local svg {
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+/* Responsivo */
+@media (max-width: 640px) {
+  .tela-inicial {
+    padding: 1rem;
+  }
+
+  .grid-pets {
+    grid-template-columns: 1fr;
+  }
+
+  .pet-img {
+    height: 200px;
+  }
+}

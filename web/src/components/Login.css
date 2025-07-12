@@ -1,0 +1,156 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+header {
+display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  width: 100%;
+}
+
+.logo {
+  width: 28px;
+  height: auto;
+  margin-right: 8px;
+}
+
+.amiguxos {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-grow: 1;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: #e0004d;
+  margin: 0 auto;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #000;
+}
+
+.main-content {
+  text-align: center;
+}
+
+.subtext {
+  margin-top: 4px;
+  font-size: 14px;
+}
+
+.login-box {
+  display: flex;
+  background: #f9f9f9;
+  padding: 20px 30px;
+  border-radius: 10px;
+  margin-top: 30px;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.cat-img {
+  width: 200px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  gap: 10px;
+  text-align: left;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #555;
+}
+
+input {
+  width: 100%;
+  padding: 10px 10px 10px 36px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.input-error input {
+  border-color: #e0004d;
+}
+
+.eye-btn {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: #555;
+}
+
+.eye-btn:hover {
+  color: #e0004d;
+}
+
+.error-msg {
+  color: #e0004d;
+  font-size: 12px;
+  margin-top: -6px;
+}
+.btn-cadastrar {
+  padding: 8px 20px;
+  background-color: transparent;
+  border: 1px solid #e6004c;
+  color: #e6004c;
+  border-radius: 5px;
+  transition: 0.2s;
+}
+
+.btn-cadastrar:hover {
+  background-color: #e6004c;
+  color: white;
+}
+.btn-login {
+  background: #e0004d;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.forgot-password {
+  font-size: 11px;
+  color: #e0004d;
+  text-align: right;
+  text-decoration: none;
+}
+
+.logo-nome {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-grow: 1;
+  justify-content: center;
+}
