@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import './CadastrarPet.css';
-import { FaCamera } from 'react-icons/fa';
+import React, { useState } from "react";
+import "./CadastrarPet.css";
+import { FaCamera } from "react-icons/fa";
 
 export default function CadastrarPet() {
-  const [nome, setNome] = useState('');
-  const [especie, setEspecie] = useState('');
-  const [sexo, setSexo] = useState('');
-  const [descricao, setDescricao] = useState('');
+  const [nome, setNome] = useState("");
+  const [especie, setEspecie] = useState("");
+  const [sexo, setSexo] = useState("");
+  const [descricao, setDescricao] = useState("");
   const [imagem, setImagem] = useState<File | null>(null);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,12 +18,12 @@ export default function CadastrarPet() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('nome', nome);
-    formData.append('especie', especie);
-    formData.append('sexo', sexo);
-    formData.append('descricao', descricao);
-    if (imagem) formData.append('imagem', imagem);
-    console.log('Pet cadastrado!', { nome, especie, sexo, descricao, imagem });
+    formData.append("nome", nome);
+    formData.append("especie", especie);
+    formData.append("sexo", sexo);
+    formData.append("descricao", descricao);
+    if (imagem) formData.append("imagem", imagem);
+    console.log("Pet cadastrado!", { nome, especie, sexo, descricao, imagem });
   };
 
   return (
@@ -58,28 +58,36 @@ export default function CadastrarPet() {
           <div className="btn-group">
             <button
               type="button"
-              className={especie === 'Gato' ? 'ativo' : ''}
-              onClick={() => setEspecie('Gato')}
-            >Gato</button>
+              className={especie === "Gato" ? "ativo" : ""}
+              onClick={() => setEspecie("Gato")}
+            >
+              Gato
+            </button>
             <button
               type="button"
-              className={especie === 'Cachorro' ? 'ativo' : ''}
-              onClick={() => setEspecie('Cachorro')}
-            >Cachorro</button>
+              className={especie === "Cachorro" ? "ativo" : ""}
+              onClick={() => setEspecie("Cachorro")}
+            >
+              Cachorro
+            </button>
           </div>
 
           <label>Sexo</label>
           <div className="btn-group">
             <button
               type="button"
-              className={sexo === 'Macho' ? 'ativo' : ''}
-              onClick={() => setSexo('Macho')}
-            >Macho</button>
+              className={sexo === "Macho" ? "ativo" : ""}
+              onClick={() => setSexo("Macho")}
+            >
+              Macho
+            </button>
             <button
               type="button"
-              className={sexo === 'Fêmea' ? 'ativo' : ''}
-              onClick={() => setSexo('Fêmea')}
-            >Fêmea</button>
+              className={sexo === "Fêmea" ? "ativo" : ""}
+              onClick={() => setSexo("Fêmea")}
+            >
+              Fêmea
+            </button>
           </div>
 
           <label>Descrição</label>
@@ -89,9 +97,11 @@ export default function CadastrarPet() {
             onChange={(e) => setDescricao(e.target.value)}
           />
 
-          <button type="submit" className="btn-cadastrar">Cadastrar</button>
+          <button type="submit" className="btn-cadastrar">
+            Cadastrar
+          </button>
         </form>
       </div>
     </div>
   );
-};
+}

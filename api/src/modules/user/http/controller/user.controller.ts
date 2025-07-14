@@ -19,7 +19,7 @@ import { SignupRequestDto } from '../../core/application/dtos/request/signup.req
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Post('/create')
+  @Post('/signup')
   @HttpCode(HttpStatus.CREATED)
   async signup(@Body() request: SignupRequestDto) {
     await this.userService.signup(request);
